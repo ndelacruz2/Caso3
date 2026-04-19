@@ -2,12 +2,22 @@ package Implementación;
 
 import java.util.LinkedList;
 
-public class BuzonEntrada
+public class BuzonConsolidacion
 {
     private final LinkedList<Mensaje> cola = new LinkedList<>();
+    private final int capacidad;
 
-    public synchronized void enviar(Mensaje m)
+    public BuzonConsolidacion(int capacidad)
     {
+        this.capacidad = capacidad;
+    }
+
+    public synchronized void enviar(Mensaje m) throws InterruptedException
+    {
+        while (cola.size() == capacidad)
+        {
+            wait();
+        }
         cola.add(m);
         notifyAll();
     }

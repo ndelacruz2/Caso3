@@ -1,22 +1,32 @@
 package Implementación;
 
 public class Mensaje {
-    private final String contenido;
-    private boolean esSpam;
+    private final String id;
+    private final int tipoServidor;
     private final boolean esFinal;
 
-    public Mensaje(String contenido)
+    public Mensaje(int sensorId, int secuencial, int tipoServidor)
     {
-        this.contenido = contenido;
-        this.esSpam = false;
+        this.id = "sensor" + sensorId + "-" + secuencial;
+        this.tipoServidor = tipoServidor;
         this.esFinal = false;
     }
 
-    public Mensaje (boolean esFinal)
+    public Mensaje(boolean esFinal)
     {
-        this.contenido = "Este fue el último mensaje";
-        this.esSpam = false;
+        this.id = "FIN";
+        this.tipoServidor = -1;
         this.esFinal = esFinal;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public int getTipoServidor()
+    {
+        return tipoServidor;
     }
 
     public boolean esFinal()
@@ -24,19 +34,9 @@ public class Mensaje {
         return esFinal;
     }
 
-    public boolean isEsSpam()
+    @Override
+    public String toString()
     {
-        return esSpam;
+        return esFinal ? "[FIN]" : "[Mensaje " + id + " -> servidor " + tipoServidor + "]";
     }
-
-    public void setEsSpam(boolean esSpam)
-    {
-        this.esSpam = esSpam;
-    }
-
-    public String getContenido()
-    {
-        return contenido;
-    }
-    
 }
