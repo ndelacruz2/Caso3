@@ -1,0 +1,167 @@
+=== Sistema IoT ===
+Sensores: 3 | Base: 5 | Total eventos: 30
+Clasificadores: 2 | Servidores: 3
+tam1: 2 | tam2: 2
+==================
+Broker: evento normal -> [Mensaje sensor3-1 -> servidor 1]
+Broker: evento normal -> [Mensaje sensor1-1 -> servidor 1]
+Broker: anomalía detectada -> [Mensaje sensor2-1 -> servidor 3]
+Administrador: evento inofensivo -> [Mensaje sensor2-1 -> servidor 3]
+Sensor 3 envió [Mensaje sensor3-1 -> servidor 1]
+Sensor 3 envió [Mensaje sensor3-2 -> servidor 2]
+Sensor 3 envió [Mensaje sensor3-3 -> servidor 3]
+Sensor 3 envió [Mensaje sensor3-4 -> servidor 3]
+Sensor 3 envió [Mensaje sensor3-5 -> servidor 3]
+Broker: evento normal -> [Mensaje sensor3-2 -> servidor 2]
+Sensor 1 envió [Mensaje sensor1-1 -> servidor 1]
+Sensor 2 envió [Mensaje sensor2-1 -> servidor 3]
+Sensor 3 envió [Mensaje sensor3-6 -> servidor 1]
+Broker: anomalía detectada -> [Mensaje sensor3-3 -> servidor 3]
+Sensor 1 envió [Mensaje sensor1-2 -> servidor 1]
+Administrador: evento malicioso descartado -> [Mensaje sensor3-3 -> servidor 3]
+Sensor 2 envió [Mensaje sensor2-2 -> servidor 3]
+Sensor 3 envió [Mensaje sensor3-7 -> servidor 1]
+Sensor 1 envió [Mensaje sensor1-3 -> servidor 2]
+Sensor 2 envió [Mensaje sensor2-3 -> servidor 3]
+Sensor 3 envió [Mensaje sensor3-8 -> servidor 3]
+Clasificador 2: enrutó [Mensaje sensor1-1 -> servidor 1] a servidor 1
+Servidor 1: procesando [Mensaje sensor3-1 -> servidor 1] (260ms)
+Servidor 3: procesando [Mensaje sensor2-1 -> servidor 3] (349ms)
+Broker: evento normal -> [Mensaje sensor3-4 -> servidor 3]
+Broker: anomalía detectada -> [Mensaje sensor3-5 -> servidor 3]
+Sensor 1 envió [Mensaje sensor1-4 -> servidor 1]
+Clasificador 1: enrutó [Mensaje sensor3-1 -> servidor 1] a servidor 1
+Sensor 2 envió [Mensaje sensor2-4 -> servidor 3]
+Sensor 3 envió [Mensaje sensor3-9 -> servidor 2]
+Administrador: evento inofensivo -> [Mensaje sensor3-5 -> servidor 3]
+Servidor 2: procesando [Mensaje sensor3-2 -> servidor 2] (248ms)
+Clasificador 2: enrutó [Mensaje sensor2-1 -> servidor 3] a servidor 3
+Sensor 1 envió [Mensaje sensor1-5 -> servidor 3]
+Broker: evento normal -> [Mensaje sensor3-6 -> servidor 1]
+Clasificador 1: enrutó [Mensaje sensor3-2 -> servidor 2] a servidor 2
+Sensor 2 envió [Mensaje sensor2-5 -> servidor 2]
+Broker: evento normal -> [Mensaje sensor1-2 -> servidor 1]
+Sensor 2 envió [Mensaje sensor2-6 -> servidor 1]
+Sensor 3 envió [Mensaje sensor3-10 -> servidor 3]
+Clasificador 2: enrutó [Mensaje sensor3-4 -> servidor 3] a servidor 3
+Clasificador 1: enrutó [Mensaje sensor3-5 -> servidor 3] a servidor 3
+Clasificador 2: enrutó [Mensaje sensor3-6 -> servidor 1] a servidor 1
+Broker: evento normal -> [Mensaje sensor2-2 -> servidor 3]
+Sensor 2 envió [Mensaje sensor2-7 -> servidor 2]
+Sensor 3 envió [Mensaje sensor3-11 -> servidor 1]
+Broker: evento normal -> [Mensaje sensor3-7 -> servidor 1]
+Sensor 2 envió [Mensaje sensor2-8 -> servidor 2]
+Sensor 3 envió [Mensaje sensor3-12 -> servidor 3]
+Broker: evento normal -> [Mensaje sensor1-3 -> servidor 2]
+Sensor 2 envió [Mensaje sensor2-9 -> servidor 1]
+Sensor 3 envió [Mensaje sensor3-13 -> servidor 1]
+Sensor 2 envió [Mensaje sensor2-10 -> servidor 2]
+Sensor 3 envió [Mensaje sensor3-14 -> servidor 2]
+Sensor 3 envió [Mensaje sensor3-15 -> servidor 3]
+Servidor 2: terminó de procesar [Mensaje sensor3-2 -> servidor 2]
+Servidor 1: terminó de procesar [Mensaje sensor3-1 -> servidor 1]
+Servidor 1: procesando [Mensaje sensor1-1 -> servidor 1] (653ms)
+Clasificador 1: enrutó [Mensaje sensor1-2 -> servidor 1] a servidor 1
+Broker: evento normal -> [Mensaje sensor2-3 -> servidor 3]
+Broker: anomalía detectada -> [Mensaje sensor3-8 -> servidor 3]
+Administrador: evento malicioso descartado -> [Mensaje sensor3-8 -> servidor 3]
+Servidor 3: terminó de procesar [Mensaje sensor2-1 -> servidor 3]
+Servidor 3: procesando [Mensaje sensor3-4 -> servidor 3] (518ms)
+Clasificador 2: enrutó [Mensaje sensor2-2 -> servidor 3] a servidor 3
+Clasificador 2: enrutó [Mensaje sensor1-3 -> servidor 2] a servidor 2
+Broker: evento normal -> [Mensaje sensor1-4 -> servidor 1]
+Servidor 2: procesando [Mensaje sensor1-3 -> servidor 2] (181ms)
+Broker: evento normal -> [Mensaje sensor2-4 -> servidor 3]
+Servidor 2: terminó de procesar [Mensaje sensor1-3 -> servidor 2]
+Servidor 3: terminó de procesar [Mensaje sensor3-4 -> servidor 3]
+Clasificador 2: enrutó [Mensaje sensor2-3 -> servidor 3] a servidor 3
+Servidor 3: procesando [Mensaje sensor3-5 -> servidor 3] (670ms)
+Broker: evento normal -> [Mensaje sensor3-9 -> servidor 2]
+Servidor 1: terminó de procesar [Mensaje sensor1-1 -> servidor 1]
+Servidor 1: procesando [Mensaje sensor3-6 -> servidor 1] (584ms)
+Clasificador 1: enrutó [Mensaje sensor3-7 -> servidor 1] a servidor 1
+Broker: evento normal -> [Mensaje sensor1-5 -> servidor 3]
+Servidor 1: terminó de procesar [Mensaje sensor3-6 -> servidor 1]
+Servidor 1: procesando [Mensaje sensor1-2 -> servidor 1] (404ms)
+Clasificador 2: enrutó [Mensaje sensor1-4 -> servidor 1] a servidor 1
+Clasificador 2: enrutó [Mensaje sensor3-9 -> servidor 2] a servidor 2
+Broker: evento normal -> [Mensaje sensor2-5 -> servidor 2]
+Broker: evento normal -> [Mensaje sensor3-10 -> servidor 3]
+Servidor 2: procesando [Mensaje sensor3-9 -> servidor 2] (452ms)
+Servidor 3: terminó de procesar [Mensaje sensor3-5 -> servidor 3]
+Servidor 3: procesando [Mensaje sensor2-2 -> servidor 3] (480ms)
+Clasificador 1: enrutó [Mensaje sensor2-4 -> servidor 3] a servidor 3
+Clasificador 1: enrutó [Mensaje sensor2-5 -> servidor 2] a servidor 2
+Broker: evento normal -> [Mensaje sensor2-6 -> servidor 1]
+Broker: evento normal -> [Mensaje sensor2-7 -> servidor 2]
+Servidor 1: terminó de procesar [Mensaje sensor1-2 -> servidor 1]
+Servidor 1: procesando [Mensaje sensor3-7 -> servidor 1] (233ms)
+Servidor 2: terminó de procesar [Mensaje sensor3-9 -> servidor 2]
+Servidor 2: procesando [Mensaje sensor2-5 -> servidor 2] (562ms)
+Servidor 3: terminó de procesar [Mensaje sensor2-2 -> servidor 3]
+Servidor 3: procesando [Mensaje sensor2-3 -> servidor 3] (825ms)
+Clasificador 2: enrutó [Mensaje sensor1-5 -> servidor 3] a servidor 3
+Clasificador 2: enrutó [Mensaje sensor2-6 -> servidor 1] a servidor 1
+Broker: evento normal -> [Mensaje sensor3-11 -> servidor 1]
+Clasificador 2: enrutó [Mensaje sensor2-7 -> servidor 2] a servidor 2
+Broker: evento normal -> [Mensaje sensor2-8 -> servidor 2]
+Broker: evento normal -> [Mensaje sensor3-12 -> servidor 3]
+Servidor 1: terminó de procesar [Mensaje sensor3-7 -> servidor 1]
+Servidor 1: procesando [Mensaje sensor1-4 -> servidor 1] (592ms)
+Clasificador 2: enrutó [Mensaje sensor3-11 -> servidor 1] a servidor 1
+Clasificador 2: enrutó [Mensaje sensor2-8 -> servidor 2] a servidor 2
+Broker: evento normal -> [Mensaje sensor2-9 -> servidor 1]
+Broker: evento normal -> [Mensaje sensor3-13 -> servidor 1]
+Servidor 2: terminó de procesar [Mensaje sensor2-5 -> servidor 2]
+Servidor 2: procesando [Mensaje sensor2-7 -> servidor 2] (705ms)
+Servidor 1: terminó de procesar [Mensaje sensor1-4 -> servidor 1]
+Servidor 1: procesando [Mensaje sensor2-6 -> servidor 1] (772ms)
+Servidor 3: terminó de procesar [Mensaje sensor2-3 -> servidor 3]
+Clasificador 1: enrutó [Mensaje sensor3-10 -> servidor 3] a servidor 3
+Servidor 3: procesando [Mensaje sensor2-4 -> servidor 3] (253ms)
+Broker: evento normal -> [Mensaje sensor2-10 -> servidor 2]
+Clasificador 1: enrutó [Mensaje sensor2-9 -> servidor 1] a servidor 1
+Broker: evento normal -> [Mensaje sensor3-14 -> servidor 2]
+Broker: anomalía detectada -> [Mensaje sensor3-15 -> servidor 3]
+Administrador: evento malicioso descartado -> [Mensaje sensor3-15 -> servidor 3]
+Broker: terminó, envió FIN al administrador.
+Servidor 3: terminó de procesar [Mensaje sensor2-4 -> servidor 3]
+Clasificador 2: enrutó [Mensaje sensor3-12 -> servidor 3] a servidor 3
+Servidor 3: procesando [Mensaje sensor1-5 -> servidor 3] (270ms)
+Clasificador 2: enrutó [Mensaje sensor2-10 -> servidor 2] a servidor 2
+Administrador: terminó, envió 2 FIN a clasificadores.
+Servidor 2: terminó de procesar [Mensaje sensor2-7 -> servidor 2]
+Clasificador 2: enrutó [Mensaje sensor3-14 -> servidor 2] a servidor 2
+Servidor 2: procesando [Mensaje sensor2-8 -> servidor 2] (857ms)
+Clasificador 2: recibió FIN, terminando.
+Servidor 3: terminó de procesar [Mensaje sensor1-5 -> servidor 3]
+Servidor 3: procesando [Mensaje sensor3-10 -> servidor 3] (224ms)
+Servidor 1: terminó de procesar [Mensaje sensor2-6 -> servidor 1]
+Servidor 1: procesando [Mensaje sensor3-11 -> servidor 1] (273ms)
+Clasificador 1: enrutó [Mensaje sensor3-13 -> servidor 1] a servidor 1
+Clasificador 1: recibió FIN, terminando.
+Servidor 3: terminó de procesar [Mensaje sensor3-10 -> servidor 3]
+Servidor 3: procesando [Mensaje sensor3-12 -> servidor 3] (404ms)
+Servidor 1: terminó de procesar [Mensaje sensor3-11 -> servidor 1]
+Servidor 1: procesando [Mensaje sensor2-9 -> servidor 1] (149ms)
+Servidor 1: terminó de procesar [Mensaje sensor2-9 -> servidor 1]
+Servidor 1: procesando [Mensaje sensor3-13 -> servidor 1] (908ms)
+Servidor 3: terminó de procesar [Mensaje sensor3-12 -> servidor 3]
+Servidor 2: terminó de procesar [Mensaje sensor2-8 -> servidor 2]
+Servidor 2: procesando [Mensaje sensor2-10 -> servidor 2] (674ms)
+Clasificador 1: último en terminar, envió FIN a todos los servidores.
+Servidor 3: recibió FIN, terminando.
+Servidor 2: terminó de procesar [Mensaje sensor2-10 -> servidor 2]
+Servidor 2: procesando [Mensaje sensor3-14 -> servidor 2] (379ms)
+Servidor 1: terminó de procesar [Mensaje sensor3-13 -> servidor 1]
+Servidor 1: recibió FIN, terminando.
+Servidor 2: terminó de procesar [Mensaje sensor3-14 -> servidor 2]
+Servidor 2: recibió FIN, terminando.
+=== Sistema IoT finalizado ===
+--- Verificación de buzones ---
+Buzón entrada vacío:       true
+Buzón alertas vacío:       true
+Buzón clasificación vacío: true
+Buzón servidor 1 vacío:    true
+Buzón servidor 2 vacío:    true
+Buzón servidor 3 vacío:    true
