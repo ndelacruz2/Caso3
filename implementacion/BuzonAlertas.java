@@ -2,23 +2,28 @@ package implementacion;
 
 import java.util.LinkedList;
 
-public class BuzonEntrada
+public class BuzonAlertas
 {
     private final LinkedList<Mensaje> cola = new LinkedList<>();
 
     public synchronized void enviar(Mensaje m)
     {
         cola.add(m);
-        notifyAll();
     }
 
-    public synchronized Mensaje retirar() throws InterruptedException
+    public Mensaje retirar() throws InterruptedException
     {
-        while (cola.isEmpty())
+        while (true)
         {
-            wait();
+            synchronized (this)
+            {
+                if (!cola.isEmpty())
+                {
+                    return cola.poll();
+                }
+            }
+            Thread.yield();
         }
-        return cola.poll();
     }
 
     public synchronized boolean estaVacio()

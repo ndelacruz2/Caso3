@@ -1,4 +1,4 @@
-package Implementación;
+package implementacion;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -34,7 +34,7 @@ public class Main
 
         // Crear buzones
         BuzonEntrada buzonEntrada             = new BuzonEntrada();
-        BuzonCuarentena buzonAlertas          = new BuzonCuarentena();
+        BuzonAlertas buzonAlertas             = new BuzonAlertas();
         BuzonClasificacion buzonClasificacion = new BuzonClasificacion(tam1);
 
         BuzonConsolidacion[] buzonesConsolidacion = new BuzonConsolidacion[ns];
@@ -43,46 +43,53 @@ public class Main
             buzonesConsolidacion[i] = new BuzonConsolidacion(tam2);
         }
 
-        // Inicializar contador de clasificadores activos
-        Clasificador.inicializarActivos(nc);
-
         // Crear threads
-        ClienteEmisor[] sensores = new ClienteEmisor[ni];
+        Sensor[] sensores = new Sensor[ni];
         for (int i = 0; i < ni; i++)
         {
-            sensores[i] = new ClienteEmisor(buzonEntrada, i + 1, base, ns);
+            sensores[i] = new Sensor(buzonEntrada, i + 1, base, ns);
         }
 
-        FiltroSpam broker = new FiltroSpam(buzonEntrada, buzonAlertas, buzonClasificacion, totalEventos);
+        Broker broker = new Broker(buzonEntrada, buzonAlertas, buzonClasificacion, totalEventos);
 
-        ManejadorCuarentena administrador = new ManejadorCuarentena(buzonAlertas, buzonClasificacion, nc);
+        Administrador administrador = new Administrador(buzonAlertas, buzonClasificacion, nc);
 
+        ContadorClasificadores contador = new ContadorClasificadores(nc);
         Clasificador[] clasificadores = new Clasificador[nc];
         for (int i = 0; i < nc; i++)
         {
-            clasificadores[i] = new Clasificador(buzonClasificacion, buzonesConsolidacion, i + 1);
+            clasificadores[i] = new Clasificador(buzonClasificacion, buzonesConsolidacion, contador, i + 1);
         }
 
-        ServidorEntrega[] servidores = new ServidorEntrega[ns];
+        Servidor[] servidores = new Servidor[ns];
         for (int i = 0; i < ns; i++)
         {
-            servidores[i] = new ServidorEntrega(buzonesConsolidacion[i], i + 1);
+            servidores[i] = new Servidor(buzonesConsolidacion[i], i + 1);
         }
 
         // Arrancar todos los threads
-        for (ServidorEntrega s : servidores)     s.start();
-        for (Clasificador c : clasificadores)    c.start();
+        for (Servidor s : servidores)         s.start();
+        for (Clasificador c : clasificadores) c.start();
         administrador.start();
         broker.start();
-        for (ClienteEmisor sensor : sensores)    sensor.start();
+        for (Sensor sensor : sensores)        sensor.start();
 
         // Esperar a que todos terminen
-        for (ClienteEmisor sensor : sensores)    sensor.join();
+        for (Sensor sensor : sensores)        sensor.join();
         broker.join();
         administrador.join();
-        for (Clasificador c : clasificadores)    c.join();
-        for (ServidorEntrega s : servidores)     s.join();
+        for (Clasificador c : clasificadores) c.join();
+        for (Servidor s : servidores)         s.join();
 
+        // Verificación final: todos los buzones deben quedar vacíos
         System.out.println("=== Sistema IoT finalizado ===");
+        System.out.println("--- Verificación de buzones ---");
+        System.out.println("Buzón entrada vacío:       " + buzonEntrada.estaVacio());
+        System.out.println("Buzón alertas vacío:       " + buzonAlertas.estaVacio());
+        System.out.println("Buzón clasificación vacío: " + buzonClasificacion.estaVacio());
+        for (int i = 0; i < ns; i++)
+        {
+            System.out.println("Buzón servidor " + (i + 1) + " vacío:    " + buzonesConsolidacion[i].estaVacio());
+        }
     }
 }

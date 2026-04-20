@@ -1,4 +1,4 @@
-package Implementación;
+package implementacion;
 
 import java.util.LinkedList;
 
@@ -31,5 +31,10 @@ public class BuzonConsolidacion
         Mensaje m = cola.poll();
         notifyAll();
         return m;
+    }
+
+    public synchronized boolean estaVacio()
+    {
+        return cola.isEmpty();
     }
 }

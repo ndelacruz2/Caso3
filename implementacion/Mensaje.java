@@ -1,4 +1,4 @@
-package Implementación;
+package implementacion;
 
 public class Mensaje {
     private final String id;
